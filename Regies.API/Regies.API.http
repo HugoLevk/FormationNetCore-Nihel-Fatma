@@ -1,9 +1,10 @@
+@Regies.API_HostAddress = https://localhost:7246
 @Host = https://localhost
 @port = 7246
 
 @RegiesAPI_HostAddress = {{Host}}:{{port}}
 
-GET {{RegiesAPI_HostAddress}}/weatherforecast/
+GET {{RegiesAPI_HostAddress}}/weatherforecast/ExampleGet
 Accept: application/json
 
 ###
@@ -22,3 +23,21 @@ Content-Type: application/json
   "email" : "email@test.com"
 }
 
+###
+
+GET {{Regies.API_HostAddress}}/weatherforecast/10/GetConstruct?max=50
+Content-Type:application/json
+
+###
+
+GET {{RegiesAPI_HostAddress}}/weatherforecast/CurrentDay
+
+
+###
+
+POST {{Regies.API_HostAddress}}/weatherforecast
+Content-Type: application/json
+
+"Fatma & Nihel"
+
+###
