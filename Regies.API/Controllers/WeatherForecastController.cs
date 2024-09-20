@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Regies.API.Controllers;
@@ -18,10 +19,17 @@ public class WeatherForecastController(ILogger<WeatherForecastController> p_logg
     [HttpGet]
     [Route("{take}/GetConstruct")]
     //https://localhost:7246/weatherforecast/31/GetConstruct?max=50
-    public IEnumerable<WeatherForecast> Get([FromQuery]int max, [FromRoute] int take)
+    public IActionResult Get([FromQuery]int max, [FromRoute] int take)
     {
         p_logger.LogInformation("Logged");
-        return p_service.Get(max, take);
+        var result = p_service.Get(max, take);
+        var argExc = new ArgumentException("Bad Arguments");
+        argExc.Source = "Vient d'ici";
+        
+
+        return StatusCode(500, argExc);
+        return StatusCode(400,result);
+        
     }
 
     [HttpGet("CurrentDay")]
