@@ -1,6 +1,24 @@
-@Regies.API_HostAddress = http://localhost:5058
+@Host = https://localhost
+@port = 7246
 
-GET {{Regies.API_HostAddress}}/weatherforecast/
+@RegiesAPI_HostAddress = {{Host}}:{{port}}
+
+GET {{RegiesAPI_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET {{RegiesAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+Guid : {{$guid}}
+LocalDate : {{$datetime iso8601}}
+Random-int : {{$randomInt}}
+
+###
+
+POST {{RegiesAPI_HostAddress}}/weatherforecast/
+Content-Type: application/json
+{
+  "email" : "email@test.com"
+}
+
