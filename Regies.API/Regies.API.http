@@ -1,4 +1,4 @@
-@Regies.API_HostAddress = https://localhost:7246
+@RegiesAPI_HostAddress = https://localhost:7246
 @Host = https://localhost
 @port = 7246
 
@@ -25,7 +25,7 @@ Content-Type: application/json
 
 ###
 
-GET {{Regies.API_HostAddress}}/weatherforecast/10/GetConstruct?max=50
+GET {{RegiesAPI_HostAddress}}/weatherforecast/10/GetConstruct?max=50
 Content-Type:application/json
 
 ###
@@ -35,9 +35,45 @@ GET {{RegiesAPI_HostAddress}}/weatherforecast/CurrentDay
 
 ###
 
-POST {{Regies.API_HostAddress}}/weatherforecast
+POST {{RegiesAPI_HostAddress}}/weatherforecast
 Content-Type: application/json
 
 "Fatma & Nihel"
+
+###
+#BadRequest 0 Results
+POST {{RegiesAPI_HostAddress}}/weatherforecast/create?resultsNumber=0
+Content-Type: application/json
+{
+   
+   "min": -10,
+   "max": 30
+   
+}
+
+###
+#Bad Request : min > max
+POST {{RegiesAPI_HostAddress}}/weatherforecast/create?resultsNumber=50
+Content-Type: application/json
+{
+    "min" : 20,
+    "max" : 0
+}
+
+###
+#Bad Request : Both errors
+POST {{RegiesAPI_HostAddress}}/weatherforecast/create?resultsNumber=0
+Content-Type: application/json
+{
+    "min" : 20,
+    "max" : 0
+}
+###
+POST {{RegiesAPI_HostAddress}}/weatherforecast/create?resultsNumber=10
+Content-Type: application/json
+{
+  "min" : -50,
+  "max" : 60
+}
 
 ###
