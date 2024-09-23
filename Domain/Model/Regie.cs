@@ -11,7 +11,7 @@ public class Regie
     public string? contactEmail { get; set; }
     public string? contactTelephone {  get; set; }
 
-    public Adresse? Adresse { get; set; }
+    public Adresse Adresse { get; set; } = default!;
 
     public List<BienImmobilier> lesBiensDeLaRegie { get; set; } = [];
 
