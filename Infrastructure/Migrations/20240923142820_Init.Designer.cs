@@ -12,7 +12,7 @@ using Regies.Infrastructure.Persistence;
 namespace Regies.Infrastructure.Migrations
 {
     [DbContext(typeof(RegiesDBContext))]
-    [Migration("20240923133134_Init")]
+    [Migration("20240923142820_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -49,11 +49,11 @@ namespace Regies.Infrastructure.Migrations
                         .HasColumnType("bit");
 
                     b.Property<decimal>("prixLocatif")
-                        .HasPrecision(2)
+                        .HasPrecision(10, 2)
                         .HasColumnType("numeric");
 
                     b.Property<decimal>("prixVente")
-                        .HasPrecision(2)
+                        .HasPrecision(10, 2)
                         .HasColumnType("numeric");
 
                     b.HasKey("Id");

@@ -46,11 +46,11 @@ namespace Regies.Infrastructure.Migrations
                         .HasColumnType("bit");
 
                     b.Property<decimal>("prixLocatif")
-                        .HasPrecision(2)
+                        .HasPrecision(10, 2)
                         .HasColumnType("numeric");
 
                     b.Property<decimal>("prixVente")
-                        .HasPrecision(2)
+                        .HasPrecision(10, 2)
                         .HasColumnType("numeric");
 
                     b.HasKey("Id");

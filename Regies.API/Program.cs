@@ -1,4 +1,5 @@
 using Regies.Infrastructure.Extensions;
+using Regies.Infrastructure.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,12 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 
 var app = builder.Build();
+
+var scope = app.Services.CreateScope();
+var seeder = scope.ServiceProvider.GetRequiredService<IRegiesSeeder>();
+
+await seeder.Seed();
+
 
 // Configure the HTTP request pipeline.
 app.UseHttpsRedirection();

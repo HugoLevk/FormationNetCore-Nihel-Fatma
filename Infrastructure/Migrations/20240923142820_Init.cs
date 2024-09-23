@@ -45,8 +45,8 @@ namespace Regies.Infrastructure.Migrations
                     Adresse_codePostal = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     pourParticulier = table.Column<bool>(type: "bit", nullable: false),
                     isLocation = table.Column<bool>(type: "bit", nullable: false),
-                    prixLocatif = table.Column<decimal>(type: "numeric(2,0)", precision: 2, nullable: false),
-                    prixVente = table.Column<decimal>(type: "numeric(2,0)", precision: 2, nullable: false),
+                    prixLocatif = table.Column<decimal>(type: "numeric(10,2)", precision: 10, scale: 2, nullable: false),
+                    prixVente = table.Column<decimal>(type: "numeric(10,2)", precision: 10, scale: 2, nullable: false),
                     RegieId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

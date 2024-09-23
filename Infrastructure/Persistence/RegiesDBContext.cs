@@ -27,12 +27,12 @@ public class RegiesDBContext(DbContextOptions<RegiesDBContext> dbContextOptions)
         modelBuilder.Entity<BienImmobilier>()
             .Property(bi => bi.prixLocatif)
             .HasColumnType("numeric")
-            .HasPrecision(2);
+            .HasPrecision(10,2);
 
         modelBuilder.Entity<BienImmobilier>()
             .Property(bi => bi.prixVente)
             .HasColumnType("numeric")
-            .HasPrecision(2);
+            .HasPrecision(10,2);
     }
 
 }
