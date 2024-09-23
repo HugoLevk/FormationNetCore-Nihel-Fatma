@@ -9,8 +9,7 @@ public static class ServiceCollectionExtensions
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = "Server=(localdb)\\mssqllocaldb;Database=RegiesDb;Trusted_Connection=True;";
-
+        var connectionString = configuration.GetConnectionString("RegiesDB");
         services.AddDbContext<RegiesDBContext>(options => options.UseSqlServer(connectionString));
     }
 }

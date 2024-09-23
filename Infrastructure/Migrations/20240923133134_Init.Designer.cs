@@ -12,7 +12,7 @@ using Regies.Infrastructure.Persistence;
 namespace Regies.Infrastructure.Migrations
 {
     [DbContext(typeof(RegiesDBContext))]
-    [Migration("20240923123811_Init")]
+    [Migration("20240923133134_Init")]
     partial class Init
     {
         /// <inheritdoc />

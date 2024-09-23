@@ -3,18 +3,11 @@ using Regies.Domain.Model;
 
 namespace Regies.Infrastructure.Persistence;
 
-public class RegiesDBContext : DbContext
+public class RegiesDBContext(DbContextOptions<RegiesDBContext> dbContextOptions) : DbContext(dbContextOptions)
 {
     internal DbSet<Regie> Regies { get; set; }
 
     internal DbSet<BienImmobilier> BienImmobiliers { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        var connectionString = "Server=(localdb)\\mssqllocaldb;Database=RegiesDb;Trusted_Connection=True;";
-
-        optionsBuilder.UseSqlServer(connectionString);
-    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
