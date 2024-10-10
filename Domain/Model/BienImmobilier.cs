@@ -1,5 +1,17 @@
 ﻿namespace Regies.Domain.Model;
 
+public enum TypeBien
+{
+    Appartement,
+    Maison,
+    Terrain,
+    Immeuble,
+    Bureau,
+    LocalCommercial,
+    Garage,
+    Autre
+}
+
 public class BienImmobilier
 {
     public Guid Id { get; set; }
@@ -16,6 +28,9 @@ public class BienImmobilier
 
     public decimal prixLocatif {  get; set; }
     public decimal prixVente { get; set; }
+
+    public int? anneeCOnstruction { get; set; }
+    public TypeBien _typeBien { get; set; } = TypeBien.Appartement;
 
     public int RegieId { get; set; }
 }
