@@ -1,4 +1,5 @@
 using Regies.Infrastructure.Extensions;
+using Regies.Application.Extensions;
 using Regies.Infrastructure.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
 
 
 var app = builder.Build();
