@@ -10,4 +10,9 @@ public class RegieService(IRegieRepository regieRepository) : IRegieService
         return await regieRepository.GetAllAsync();
     }
 
+    public async Task<Regie> GetRegieById(int id)
+    {
+        return await regieRepository.GetByIdAsync(id);
+    }
+
 }

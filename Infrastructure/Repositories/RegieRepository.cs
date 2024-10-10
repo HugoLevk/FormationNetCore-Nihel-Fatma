@@ -11,4 +11,8 @@ internal class RegieRepository(RegiesDBContext rDBContext) : IRegieRepository
     {
         return await rDBContext.Regies.ToListAsync();
     }
+    public async Task<Regie?> GetByIdAsync(int id)
+    {
+        return await rDBContext.Regies.FirstOrDefaultAsync( r => r.Id == id);
+    }
 }

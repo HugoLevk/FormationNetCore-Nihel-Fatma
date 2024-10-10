@@ -1,4 +1,12 @@
+@Regies.API_HostAddress = https://localhost:7246
 @Host = https://localhost
 @port = 7246
 
 @RegiesAPI_HostAddress = {{Host}}:{{port}}
+
+GET {{Regies.API_HostAddress}}/api/regies
+
+###
+
+GET {{Regies.API_HostAddress}}/api/regies/{id}?id=2
+###

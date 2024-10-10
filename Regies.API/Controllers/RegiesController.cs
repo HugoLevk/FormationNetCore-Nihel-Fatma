@@ -13,4 +13,15 @@ public class RegiesController(IRegieService service) :  ControllerBase
         var regies = await service.GetAllRegies();
         return Ok(regies);
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById([FromQuery]int id)
+    {
+        var regie = await service.GetRegieById(id);
+        if (regie == null)
+        {
+            return NotFound();
+        }
+        return Ok(regie);
+    }
 }
