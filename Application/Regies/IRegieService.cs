@@ -1,9 +1,10 @@
-﻿using Regies.Domain.Model;
+﻿using Regies.Application.Regies.DTOs;
+using Regies.Domain.Model;
 
 namespace Regies.Application.Regies;
 
 public interface IRegieService
 {
-    Task<IEnumerable<Regie>> GetAllRegies();
-    Task<Regie> GetRegieById(int id);
+    Task<IEnumerable<RegieDto>> GetAllRegies();
+    Task<RegieDto> GetRegieById(int id);
 }
