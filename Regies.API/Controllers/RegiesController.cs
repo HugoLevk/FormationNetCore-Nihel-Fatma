@@ -29,6 +29,12 @@ public class RegiesController(IRegieService service) :  ControllerBase
     [HttpPost("create")]
     public async Task<IActionResult> CreateRegie([FromBody] CreateRegieDTO createRegieDTO)
     {
+        if(!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+
         var regieId = await service.CreateRegie(createRegieDTO);
         return CreatedAtAction(nameof(GetById), new { id = regieId }, null);
     }
