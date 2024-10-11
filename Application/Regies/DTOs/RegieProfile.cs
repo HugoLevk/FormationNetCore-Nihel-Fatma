@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Regies.Application.Regies.Commands.CreateRegie;
 using Regies.Domain.Model;
 
 namespace Regies.Application.Regies.DTOs;
@@ -15,7 +16,7 @@ public class RegieProfile : Profile
               .ForMember(dest => dest.lesBiensDeLaRegie, opt => opt.MapFrom(src => src.lesBiensDeLaRegie))
               .ReverseMap();
 
-        CreateMap<CreateRegieDTO, Regie>()
+        CreateMap<CreateRegieCommand, Regie>()
                 .ForMember(regie => regie.Adresse,
                 opt => opt.MapFrom(dto => new Adresse
                 {

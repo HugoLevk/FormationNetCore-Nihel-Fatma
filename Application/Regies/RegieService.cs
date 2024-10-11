@@ -21,11 +21,5 @@ public class RegieService(IRegieRepository regieRepository, IMapper mapper) : IR
         return regieDto;
     }
 
-    public async Task<int> CreateRegie(CreateRegieDTO createRegieDTO)
-    {
-        var regie = mapper.Map<Regie>(createRegieDTO);
-        var regieId = await regieRepository.CreateAsync(regie);
-        return regieId;
-    }
 
 }

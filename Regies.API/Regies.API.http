@@ -45,3 +45,4 @@ Content-Type: application/json
 }
 
 ###
+GET https://localhost:7246/api/Regies/1005

@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MediatR;
 
-namespace Regies.Application.Regies.DTOs;
+namespace Regies.Application.Regies.Commands.CreateRegie;
 
-public class CreateRegieDTO
+public class CreateRegieCommand : IRequest<int>
 {
     public string Nom { get; set; } = default!;
     public string Description { get; set; } = default!;

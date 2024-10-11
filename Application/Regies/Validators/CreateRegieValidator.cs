@@ -1,9 +1,10 @@
 ﻿using FluentValidation;
+using Regies.Application.Regies.Commands.CreateRegie;
 using Regies.Application.Regies.DTOs;
 
 namespace Regies.Application.Regies.Validators;
 
-public class CreateRegieValidator : AbstractValidator<CreateRegieDTO>
+public class CreateRegieValidator : AbstractValidator<CreateRegieCommand>
 {
     public CreateRegieValidator()
     {
