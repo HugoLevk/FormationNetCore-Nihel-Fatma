@@ -11,3 +11,20 @@ GET {{Regies.API_HostAddress}}/api/regies
 GET {{Regies.API_HostAddress}}/api/regies/2
 
 ###
+
+POST {{Regies.API_HostAddress}}/api/regies/create
+Content-Type: application/json
+
+{
+  "Nom" : "Immo.ch",
+  "Description" : "Régie Suisse",
+  "estActive" : true,
+  "contactEmail" : "emai@email.com",
+  "contactTelephone" : "0666666666",
+  "City" : "Geneve",
+  "Street" : "Rue de la paix",
+   "StreetNumber" : "42",
+  "ZipCode" : "5444"
+}
+
+###

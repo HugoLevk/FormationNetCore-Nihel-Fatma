@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Regies.Application.Regies;
+using Regies.Application.Regies.DTOs;
 
 namespace Regies.API.Controllers;
 
@@ -23,5 +24,12 @@ public class RegiesController(IRegieService service) :  ControllerBase
             return NotFound();
         }
         return Ok(regie);
+    }
+
+    [HttpPost("create")]
+    public async Task<IActionResult> CreateRegie([FromBody] CreateRegieDTO createRegieDTO)
+    {
+        var regieId = await service.CreateRegie(createRegieDTO);
+        return CreatedAtAction(nameof(GetById), new { id = regieId }, null);
     }
 }

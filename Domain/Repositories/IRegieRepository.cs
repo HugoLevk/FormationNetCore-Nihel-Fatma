@@ -6,4 +6,5 @@ public interface IRegieRepository
 {
     Task<IEnumerable<Regie>> GetAllAsync();
     Task<Regie> GetByIdAsync(int id);
+    Task<int> CreateAsync(Regie regie);
 }

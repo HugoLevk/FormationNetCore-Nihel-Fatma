@@ -15,4 +15,10 @@ internal class RegieRepository(RegiesDBContext rDBContext) : IRegieRepository
     {
         return await rDBContext.Regies.FindAsync(id);
     }
+    public async Task<int> CreateAsync(Regie regie)
+    {
+        rDBContext.Regies.Add(regie);
+        await rDBContext.SaveChangesAsync();
+        return regie.Id;
+    }
 }

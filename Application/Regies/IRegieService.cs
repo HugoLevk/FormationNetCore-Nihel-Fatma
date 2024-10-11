@@ -7,4 +7,5 @@ public interface IRegieService
 {
     Task<IEnumerable<RegieDto>> GetAllRegies();
     Task<RegieDto> GetRegieById(int id);
+    Task<int> CreateRegie(CreateRegieDTO createRegieDTO);
 }
