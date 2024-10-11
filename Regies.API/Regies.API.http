@@ -8,5 +8,6 @@ GET {{Regies.API_HostAddress}}/api/regies
 
 ###
 
-GET {{Regies.API_HostAddress}}/api/regies/{id}?id=2
+GET {{Regies.API_HostAddress}}/api/regies/2
+
 ###

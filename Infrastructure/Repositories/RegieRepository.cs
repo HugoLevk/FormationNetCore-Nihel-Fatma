@@ -13,6 +13,6 @@ internal class RegieRepository(RegiesDBContext rDBContext) : IRegieRepository
     }
     public async Task<Regie?> GetByIdAsync(int id)
     {
-        return await rDBContext.Regies.FirstOrDefaultAsync( r => r.Id == id);
+        return await rDBContext.Regies.FindAsync(id);
     }
 }

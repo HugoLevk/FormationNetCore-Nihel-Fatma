@@ -15,7 +15,7 @@ public class RegiesController(IRegieService service) :  ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromQuery]int id)
+    public async Task<IActionResult> GetById([FromRoute]int id)
     {
         var regie = await service.GetRegieById(id);
         if (regie == null)

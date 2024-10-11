@@ -11,6 +11,7 @@ public class RegieService(IRegieRepository regieRepository) : IRegieService
         var regies = await regieRepository.GetAllAsync();
         return regies.Select(r => new RegieDto
         {
+            Id = r.Id,
             Nom = r.Nom,
             Description = r.Description,
             estActive = r.estActive,
@@ -19,17 +20,24 @@ public class RegieService(IRegieRepository regieRepository) : IRegieService
         });
     }
 
-    public async Task<RegieDto> GetRegieById(int id)
+    public async Task<RegieDto?> GetRegieById(int id)
     {
         var regie = await regieRepository.GetByIdAsync(id);
-        return new RegieDto
+        RegieDto? regieDto = null;
+
+        if (regie != null)
         {
-            Nom = regie.Nom,
-            Description = regie.Description,
-            estActive = regie.estActive,
-            Adresse = regie.Adresse,
-            lesBiensDeLaRegie = regie.lesBiensDeLaRegie
-        };
+            regieDto = new RegieDto
+            {
+                Id = regie.Id,
+                Nom = regie.Nom,
+                Description = regie.Description,
+                estActive = regie.estActive,
+                Adresse = regie.Adresse,
+                lesBiensDeLaRegie = regie.lesBiensDeLaRegie
+            };
+        }
+        return regieDto;
     }
 
 }
