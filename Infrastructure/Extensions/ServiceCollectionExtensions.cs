@@ -13,7 +13,7 @@ public static class ServiceCollectionExtensions
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("RegiesDB");
-        services.AddDbContext<RegiesDBContext>(options => options.UseSqlServer(connectionString));
+        services.AddDbContext<RegiesDBContext>(options => options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
 
         services.AddScoped<IRegieRepository, RegieRepository>();
 

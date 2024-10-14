@@ -11,7 +11,7 @@ public class CreateRegieCommandHandler(IMapper mapper, ILogger<CreateRegieComman
 {
     public async Task<int> Handle(CreateRegieCommand request, CancellationToken cancellationToken)
     {
-        logger.LogInformation("CreateRegieCommandHandler.Handle");
+        logger.LogInformation("Creating Régie with name {@Regie}.", request.Nom);
         var regie = mapper.Map<Regie>(request);
         var regieId = await regieRepository.CreateAsync(regie);
         return regieId;
