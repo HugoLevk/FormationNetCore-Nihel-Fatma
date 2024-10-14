@@ -4,8 +4,14 @@ using Regies.Domain.Model;
 
 namespace Regies.Application.Regies.DTOs;
 
+/// <summary>
+/// Profile de mappage pour la classe Regie.
+/// </summary>
 public class RegieProfile : Profile
 {
+    /// <summary>
+    /// Initialise une nouvelle instance de la classe <see cref="RegieProfile"/>.
+    /// </summary>
     public RegieProfile()
     {
         CreateMap<Regie, RegieDto>()

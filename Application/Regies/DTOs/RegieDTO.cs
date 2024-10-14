@@ -50,5 +50,5 @@ public class RegieDto
     /// <summary>
     /// Obtient ou définit la liste des biens immobiliers de la régie.
     /// </summary>
-    public List<BienImmobilier> lesBiensDeLaRegie { get; set; } = new List<BienImmobilier>();
+    public List<BienImmobilier> lesBiensDeLaRegie { get; set; } = [];
 }

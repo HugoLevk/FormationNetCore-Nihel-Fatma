@@ -11,23 +11,14 @@ namespace Regies.API.Controllers;
 /// <summary>
 /// Contrôleur pour les opérations liées aux régies.
 /// </summary>
+/// <remarks>
+/// Initialise une nouvelle instance de la classe <see cref="RegiesController"/>.
+/// </remarks>
+/// <param name="mediator">Le médiateur.</param>
 [ApiController]
 [Route("api/[controller]")]
-public class RegiesController : ControllerBase
+public class RegiesController(IMediator mediator) : ControllerBase
 {
-    private readonly IRegieService _service;
-    private readonly IMediator _mediator;
-
-    /// <summary>
-    /// Initialise une nouvelle instance de la classe <see cref="RegiesController"/>.
-    /// </summary>
-    /// <param name="service">Le service de régies.</param>
-    /// <param name="mediator">Le médiateur.</param>
-    public RegiesController(IRegieService service, IMediator mediator)
-    {
-        _service = service;
-        _mediator = mediator;
-    }
 
     /// <summary>
     /// Obtient toutes les régies.
@@ -37,7 +28,7 @@ public class RegiesController : ControllerBase
     //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<RegieDto>))]
     public async Task<ActionResult<IEnumerable<RegieDto>>> GetAllRegies()
     {
-        var regies = await _mediator.Send(new GetAllRegiesQuery());
+        var regies = await mediator.Send(new GetAllRegiesQuery());
         return Ok(regies);
     }
 
@@ -51,7 +42,7 @@ public class RegiesController : ControllerBase
     [ProducesResponseType(404, StatusCode = StatusCodes.Status404NotFound)]
     public async Task<ActionResult<RegieDto?>> GetById([FromRoute] int id)
     {
-        var regie = await _mediator.Send(new GetRegieByIdQuery(id));
+        var regie = await mediator.Send(new GetRegieByIdQuery(id));
         if (regie == null)
         {
             return NotFound();
@@ -74,7 +65,7 @@ public class RegiesController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        int regieId = await _mediator.Send(createRegieCommand);
+        int regieId = await mediator.Send(createRegieCommand);
         return CreatedAtAction(nameof(GetById), new { id = regieId }, null);
     }
 }

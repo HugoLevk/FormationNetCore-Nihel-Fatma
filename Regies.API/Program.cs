@@ -32,7 +32,7 @@ builder.Services.AddSwaggerGen( c =>
 
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().ConfigureApiBehaviorOptions(x => { x.SuppressMapClientErrors = true; }); 
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();

@@ -4,8 +4,14 @@ using Regies.Application.Regies.DTOs;
 
 namespace Regies.Application.Regies.Validators;
 
+/// <summary>
+/// Validator for creating a regie.
+/// </summary>
 public class CreateRegieValidator : AbstractValidator<CreateRegieCommand>
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CreateRegieValidator"/> class.
+    /// </summary>
     public CreateRegieValidator()
     {
         RuleFor(r => r.Nom)
@@ -13,7 +19,7 @@ public class CreateRegieValidator : AbstractValidator<CreateRegieCommand>
             .MinimumLength(3)
             .MaximumLength(100)
             .WithErrorCode("1001")
-            .WithMessage("Le  doit comprendre entre 3 et 100 caractères.");
+            .WithMessage("Le Nom doit comprendre entre 3 et 100 caractères.");
 
         RuleFor(r => r.Description)
             .NotEmpty()
@@ -35,5 +41,4 @@ public class CreateRegieValidator : AbstractValidator<CreateRegieCommand>
             .WithErrorCode("1005")
             .WithMessage("Le Code postal n'est pas valide (XX-XXX).");
     }
-
 }

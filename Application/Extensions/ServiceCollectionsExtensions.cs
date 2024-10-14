@@ -8,12 +8,18 @@ using Regies.Application.Regies.DTOs;
 
 namespace Regies.Application.Extensions;
 
+/// <summary>
+/// Provides extension methods for configuring application services.
+/// </summary>
 public static class ServiceCollectionExtensions
 {
+    /// <summary>
+    /// Adds the necessary application services to the specified <see cref="IServiceCollection"/>.
+    /// </summary>
+    /// <param name="services">The <see cref="IServiceCollection"/> to add the services to.</param>
     public static void AddApplication(this IServiceCollection services)
     {
         System.Reflection.Assembly assembly = typeof(ServiceCollectionExtensions).Assembly;
-        services.AddScoped<IRegieService, RegieService>();
 
         services.AddAutoMapper(assembly);
 
