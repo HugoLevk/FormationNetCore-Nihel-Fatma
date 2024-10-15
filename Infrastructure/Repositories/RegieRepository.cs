@@ -21,4 +21,9 @@ internal class RegieRepository(RegiesDBContext rDBContext) : IRegieRepository
         await rDBContext.SaveChangesAsync();
         return regie.Id;
     }
+    public async Task UpdateAsync(Regie regie)
+    {
+        rDBContext.Regies.Update(regie);
+        await rDBContext.SaveChangesAsync();
+    }
 }

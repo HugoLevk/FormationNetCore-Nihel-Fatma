@@ -5,6 +5,7 @@ using Serilog.Events;
 using Serilog;
 using System.Reflection;
 using Regies.API.SchemaFilters;
+using Regies.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +44,8 @@ builder.Services.AddSwaggerGen( c =>
 
 });
 
+builder.Services.AddScoped<ErrorHandlingMiddleware>();
+
 builder.Services.AddControllers().ConfigureApiBehaviorOptions(x => { x.SuppressMapClientErrors = true; }); 
 
 builder.Services.AddInfrastructure(builder.Configuration);
@@ -63,6 +66,8 @@ await seeder.Seed();
 
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<ErrorHandlingMiddleware>();
+
 app.UseSerilogRequestLogging();
 
 if(app.Environment.IsDevelopment())

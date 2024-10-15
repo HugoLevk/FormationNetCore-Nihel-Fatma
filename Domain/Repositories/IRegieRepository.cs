@@ -26,4 +26,11 @@ public interface IRegieRepository
     /// <param name="regie">The Regie entity to create.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the ID of the created Regie entity.</returns>
     Task<int> CreateAsync(Regie regie);
+
+    /// <summary>
+    /// Updates an existing Regie entity asynchronously.
+    /// </summary>
+    /// <param name="regie">The Regie entity to update.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
+    Task UpdateAsync(Regie regie);
 }

@@ -2,6 +2,8 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Regies.Application.Regies.DTOs;
+using Regies.Domain.Exceptions;
+using Regies.Domain.Model;
 using Regies.Domain.Repositories;
 
 namespace Regies.Application.Regies.Querys.GetRegieById;
@@ -29,7 +31,7 @@ public class GetRegieByIdQueryHandler(ILogger<GetRegieByIdQueryHandler> logger,
     public async Task<RegieDto> Handle(GetRegieByIdQuery request, CancellationToken cancellationToken)
     {
         logger.LogInformation("GetRegieByIdQueryHandler.Handle with Id {Id}", request.Id);
-        var regie = await regieRepository.GetByIdAsync(request.Id);
+        var regie = await regieRepository.GetByIdAsync(request.Id) ?? throw new NotFoundException("Régie", request.Id.ToString());
         var regieDto = mapper.Map<RegieDto>(regie);
         return regieDto;
     }

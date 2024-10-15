@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Regies.Application.Regies.Commands.CreateRegie;
+using Regies.Application.Regies.Commands.UpdateRegie;
 using Regies.Domain.Model;
 
 namespace Regies.Application.Regies.DTOs;
@@ -31,5 +32,7 @@ public class RegieProfile : Profile
                     numeroRue = dto.StreetNumber,
                     codePostal = dto.ZipCode
                 }));
+
+        CreateMap<UpdateRegieCommand, Regie>();
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Regies.Application.Regies;
 using Regies.Application.Regies.Commands.CreateRegie;
+using Regies.Application.Regies.Commands.UpdateRegie;
 using Regies.Application.Regies.DTOs;
 using Regies.Application.Regies.Querys.GetAllRegies;
 using Regies.Application.Regies.Querys.GetRegieById;
@@ -71,5 +72,28 @@ public class RegiesController(IMediator mediator) : ControllerBase
 
         int regieId = await mediator.Send(createRegieCommand);
         return CreatedAtAction(nameof(GetById), new { id = regieId }, null);
+    }
+
+    /// <summary>
+    /// Met à jour une régie existante.
+    /// </summary>
+    /// <param name="id">L'identifiant de la régie à mettre à jour.</param>
+    /// <param name="updateRegieCommand">La commande de mise à jour de la régie.</param>
+    /// <returns>Une action résultant en un code de statut HTTP.</returns>
+    /// <response code="204">La régie a été mise à jour avec succès.</response>
+    /// <response code="400">Si la commande est invalide.</response>
+    [HttpPatch("{id}")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> UpdateRegie([FromRoute] int id, [FromBody] UpdateRegieCommand updateRegieCommand)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        updateRegieCommand.Id = id;
+        await mediator.Send(updateRegieCommand);
+        return NoContent();
     }
 }
