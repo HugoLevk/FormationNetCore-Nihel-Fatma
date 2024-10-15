@@ -45,6 +45,7 @@ builder.Services.AddSwaggerGen( c =>
 });
 
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
+builder.Services.AddScoped<TimeLoggingMiddleware>();
 
 builder.Services.AddControllers().ConfigureApiBehaviorOptions(x => { x.SuppressMapClientErrors = true; }); 
 
@@ -67,6 +68,8 @@ await seeder.Seed();
 
 // Configure the HTTP request pipeline.
 app.UseMiddleware<ErrorHandlingMiddleware>();
+
+app.UseMiddleware<TimeLoggingMiddleware>();
 
 app.UseSerilogRequestLogging();
 
