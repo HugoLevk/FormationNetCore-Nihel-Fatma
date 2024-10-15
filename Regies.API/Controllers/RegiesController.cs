@@ -24,8 +24,8 @@ public class RegiesController(IMediator mediator) : ControllerBase
     /// Obtient toutes les régies.
     /// </summary>
     /// <returns>Une action résultant en une liste de DTO de régies.</returns>
+    /// <response code="200">Retourne la liste des régies.</response>
     [HttpGet]
-    //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<RegieDto>))]
     public async Task<ActionResult<IEnumerable<RegieDto>>> GetAllRegies()
     {
         var regies = await mediator.Send(new GetAllRegiesQuery());
@@ -37,6 +37,8 @@ public class RegiesController(IMediator mediator) : ControllerBase
     /// </summary>
     /// <param name="id">L'identifiant de la régie.</param>
     /// <returns>Une action résultant en un DTO de régie.</returns>
+    /// <response code="200">Retourne la régie.</response>
+    /// <response code="404">Si la régie n'existe pas.</response>
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RegieDto))]
     [ProducesResponseType(404, StatusCode = StatusCodes.Status404NotFound)]
@@ -55,6 +57,8 @@ public class RegiesController(IMediator mediator) : ControllerBase
     /// </summary>
     /// <param name="createRegieCommand">La commande de création de régie.</param>
     /// <returns>Une action résultant en un code de statut HTTP.</returns>
+    /// <response code="201">La régie a été créée.</response>
+    /// <response code="400">Si la commande est invalide.</response>
     [HttpPost("create")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status201Created)]

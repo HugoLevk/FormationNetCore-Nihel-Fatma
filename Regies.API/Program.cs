@@ -11,7 +11,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddSwaggerGen( c =>
 {
-    c.SwaggerDoc("v1", new() { Title = "Regies.API", Version = "v1" });
+    c.SwaggerDoc("v1", new()
+    {
+        Title = "Regies.API",
+        Version = "v1",
+        Description = "API pour la gestion des régies.",
+        Contact = new()
+        {
+            Name = "Regies",
+            Email = "hugo.leveque@web-atrio.com",
+        },
+        
+    });
 
     c.SchemaFilter<EnumSchemaFilter>();
 
