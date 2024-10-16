@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Regies.Application.BienImmobiliers.Commands.CreateBienImmo;
 using Regies.Application.BienImmobiliers.Commands.DeleteBienImmo;
@@ -15,6 +16,7 @@ namespace Regies.API.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class BienImmoController(IMediator _mediator) : ControllerBase
 {
 

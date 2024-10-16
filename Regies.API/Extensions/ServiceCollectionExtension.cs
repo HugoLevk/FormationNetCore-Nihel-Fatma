@@ -10,6 +10,8 @@ public static class ServiceCollectionExtension
 {
     public static void AddPresentation(this WebApplicationBuilder builder)
     {
+        builder.Services.AddAuthentication();
+
         builder.Services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new()

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Regies.Application.Regies;
 using Regies.Application.Regies.Commands.CreateRegie;
@@ -18,6 +19,7 @@ namespace Regies.API.Controllers;
 /// <param name="mediator">Le médiateur.</param>
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class RegiesController(IMediator mediator) : ControllerBase
 {
 
@@ -27,6 +29,7 @@ public class RegiesController(IMediator mediator) : ControllerBase
     /// <returns>Une action résultant en une liste de DTO de régies.</returns>
     /// <response code="200">Retourne la liste des régies.</response>
     [HttpGet]
+    [AllowAnonymous]
     public async Task<ActionResult<IEnumerable<RegieDto>>> GetAllRegies()
     {
         var regies = await mediator.Send(new GetAllRegiesQuery());
