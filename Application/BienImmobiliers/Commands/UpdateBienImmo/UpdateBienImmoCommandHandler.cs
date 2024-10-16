@@ -14,7 +14,7 @@ public class UpdateBienImmoCommandHandler(ILogger<UpdateBienImmoCommandHandler> 
 
         var bienImmo = await bienImmoRepository.GetByIdAsync(request.Id) ?? throw new NotFoundException("Real estate property", request.Id.ToString());
 
-        var regie = await regieRepository.GetByIdAsync(request.Id) ?? throw new NotFoundException("Régie", request.Id.ToString());
+        var regie = await regieRepository.GetByIdAsync(bienImmo.RegieId) ?? throw new NotFoundException("Régie", request.Id.ToString());
 
         mapper.Map(request, bienImmo);
 
