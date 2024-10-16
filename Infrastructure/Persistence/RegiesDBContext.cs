@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Regies.Domain.Model;
 
 namespace Regies.Infrastructure.Persistence;
 
-public class RegiesDBContext(DbContextOptions<RegiesDBContext> dbContextOptions) : DbContext(dbContextOptions)
+public class RegiesDBContext(DbContextOptions<RegiesDBContext> dbContextOptions) : IdentityDbContext<User>(dbContextOptions)
 {
     internal DbSet<Regie> Regies { get; set; }
 

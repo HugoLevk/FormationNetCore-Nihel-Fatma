@@ -6,6 +6,7 @@ using Serilog;
 using System.Reflection;
 using Regies.API.SchemaFilters;
 using Regies.API.Middlewares;
+using Regies.Domain.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -75,6 +76,8 @@ if(app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapIdentityApi<User>();
 
 app.UseAuthorization();
 

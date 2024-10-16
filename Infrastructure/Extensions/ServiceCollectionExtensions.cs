@@ -5,6 +5,7 @@ using Regies.Domain.Repositories;
 using Regies.Infrastructure.Persistence;
 using Regies.Infrastructure.Repositories;
 using Regies.Infrastructure.Seeders;
+using Regies.Domain.Model;
 
 namespace Regies.Infrastructure.Extensions;
 
@@ -14,6 +15,9 @@ public static class ServiceCollectionExtensions
     {
         var connectionString = configuration.GetConnectionString("RegiesDB");
         services.AddDbContext<RegiesDBContext>(options => options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
+
+        services.AddIdentityApiEndpoints<User>()
+            .AddEntityFrameworkStores<RegiesDBContext>();
 
         services.AddScoped<IRegieRepository, RegieRepository>();
         services.AddScoped<IBienImmoRepository, BienImmoRepository>();
