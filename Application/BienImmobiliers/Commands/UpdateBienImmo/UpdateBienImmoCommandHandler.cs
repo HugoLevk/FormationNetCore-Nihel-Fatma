@@ -8,7 +8,7 @@ namespace Regies.Application.BienImmobiliers.Commands.UpdateBienImmo;
 
 public class UpdateBienImmoCommandHandler(ILogger<UpdateBienImmoCommandHandler> logger, IMapper mapper, IBienImmoRepository bienImmoRepository, IRegieRepository regieRepository) : IRequestHandler<UpdateBienImmoCommand>
 {
-    public async Task<Unit> Handle(UpdateBienImmoCommand request, CancellationToken cancellationToken)
+    public async Task Handle(UpdateBienImmoCommand request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Updating real estate property with ID {@Id}.", request.Id);
 
@@ -19,7 +19,6 @@ public class UpdateBienImmoCommandHandler(ILogger<UpdateBienImmoCommandHandler> 
         mapper.Map(request, bienImmo);
 
         await bienImmoRepository.UpdateAsync(bienImmo);
-
-        return Unit.Value;
+  
     }
 }

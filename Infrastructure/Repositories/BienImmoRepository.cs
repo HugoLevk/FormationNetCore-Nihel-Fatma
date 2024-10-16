@@ -44,6 +44,12 @@ public class BienImmoRepository(RegiesDBContext dbContext) : IBienImmoRepository
         return bienImmos;
     }
 
+    public async Task<IEnumerable<BienImmobilier>> GetAllFromRegieAsync(int _regieId)
+    {
+        var bienImmos = await dbContext.BienImmobiliers.Where(bi => bi.RegieId == _regieId).ToListAsync();
+        return bienImmos;
+    }
+
     /// <summary>
     /// Gets all real estate properties associated with a specific regie asynchronously.
     /// </summary>

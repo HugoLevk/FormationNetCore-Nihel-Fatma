@@ -28,10 +28,9 @@ public class BienImmobiliersProfile : Profile
             .ForPath(dest => dest.Adresse.codePostal, opt => opt.MapFrom(src => src.Adresse == null ? null : src.Adresse.codePostal))
             .ForPath(dest => dest.Adresse.numeroRue, opt => opt.MapFrom(src => src.Adresse == null ? null : src.Adresse.numeroRue));
 
-        CreateMap<UpdateBienImmoCommand, BienImmobilier>()
-            .ForPath(dest => dest.Adresse.Ville, opt => opt.MapFrom(src => src.Adresse == null ? null : src.Adresse.Ville))
-            .ForPath(dest => dest.Adresse.Rue, opt => opt.MapFrom(src => src.Adresse == null ? null : src.Adresse.Rue))
-            .ForPath(dest => dest.Adresse.codePostal, opt => opt.MapFrom(src => src.Adresse == null ? null : src.Adresse.codePostal))
-            .ForPath(dest => dest.Adresse.numeroRue, opt => opt.MapFrom(src => src.Adresse == null ? null : src.Adresse.numeroRue));
+        CreateMap<UpdateBienImmoCommand, BienImmobilier>() 
+            .ForPath(dest => dest.Adresse.Rue, opt => opt.MapFrom(src => src.Rue == null ? null : src.Rue))
+            .ForPath(dest => dest.Adresse.codePostal, opt => opt.MapFrom(src => src.CodePostal == null ? null : src.CodePostal))
+            .ForPath(dest => dest.Adresse.numeroRue, opt => opt.MapFrom(src => src.NumeroRue == null ? null : src.NumeroRue));
     }
 }
