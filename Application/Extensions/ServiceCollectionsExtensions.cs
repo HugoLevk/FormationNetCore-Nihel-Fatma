@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Regies.Application.BienImmobiliers.DTOs;
 using Regies.Application.Regies;
 using Regies.Application.Regies.DTOs;
+using Regies.Application.User;
 
 namespace Regies.Application.Extensions;
 
@@ -27,5 +28,7 @@ public static class ServiceCollectionExtensions
             cfg.RegisterServicesFromAssembly(assembly));
 
         services.AddValidatorsFromAssembly(assembly).AddFluentValidationAutoValidation();
+
+        services.AddScoped<IUserContext, UserContext>();
     }
 }

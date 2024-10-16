@@ -2,6 +2,8 @@
 @Host = https://localhost
 @port = 7246
 
+@AccessToken = CfDJ8FUx_czOlwhOr4yFD0keTAyvltnph1NSLjn1KG52yyNB4z5tMLUPnvn5BAx0s7UHJ-S1RmM1OH7DDHZq0PM1b_8kGJhsI7hbAkuFz2VY-a6M3f85PqVadORj3Wl7eQahjEimhDW-aEnEOwFM4te9NUJKnGHFdUdyPn1H57TEW7sQisk0Y0xJA-zTkCtAh3wnAbqb_Idueqmwnx9crlVYdBiVL4BwUatktFYA_ieCcxKpau3OHtcMsrpt0WIOpnwuqGsfMyLtBkKrZ1ALGIM-idVGVDP3RSZWAbxfIhdmKGLTwXU6x9jPlgSTFGgOfbYy0FPY-e6J1Mn24QxLVSGW5t9Vme_CqVAW7hQxCn8nHAuhPbiJNQBbmfK4ID6Pc7dXO4FXQk1vxNAkRXYD4DLBZUrz6RRQ0bS30uNUo-xs3ivBfgVLXL8VjP-XkwzW9tRBz2suPo2JUbF0wf_cRm7UxN6fl-ZaxUPs6h11Sz_gGF3IDVOqWxkPV6ggO66aUJLnGrebLyKWi2l_vXm_p7TKRF0m5u9IJUdW84gfmb-usOzLQU_T8-CqdCrg7E9P1vLTptHYIsvY7YDRN6HHO-hv9nnb6OvTm5opfdXzR95z0L-NAtANLuXUIMf3c59W8VFrUQLCo3MkKxD3KKtAHfQSKUb7NquOqA5M1AZF9PA9oFhRKlM-VIrFxTFVR2fLmKAXBg
+
 @RegiesAPI_HostAddress = {{Host}}:{{port}}
 
 GET {{Regies.API_HostAddress}}/api/regies
@@ -9,6 +11,7 @@ GET {{Regies.API_HostAddress}}/api/regies
 ###
 
 GET {{Regies.API_HostAddress}}/api/regies/2
+Authorization : Bearer {{AccessToken}}
 
 ###
 
@@ -31,7 +34,7 @@ Content-Type: application/json
 
 POST {{Regies.API_HostAddress}}/api/regies/create
 Content-Type: application/json
-
+Authorization : Bearer {{AccessToken}}
 {
   "Nom" : "Immo.ch", 
   "Description" : "Régie SUisse",
