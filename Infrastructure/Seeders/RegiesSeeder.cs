@@ -36,18 +36,17 @@ internal class RegiesSeeder(RegiesDBContext dbContext) : IRegiesSeeder
                 Adresse = new(){
                     Rue = "Rue de Charleston",
                     numeroRue = "17bis",
-                    codePostal = "75000",
+                    codePostal = "75-000",
                     Ville = "Paris"
                 },
                 lesBiensDeLaRegie = [
                     new() {
-                        Id = 999999,
                         NomAnnonce="MonAnnonce",
                         Decription = "Lalalalere",
                         Adresse = new(){
                                 Rue = "Rue de Charleston",
                                 numeroRue = "18",
-                                codePostal = "75000",
+                                codePostal = "75-000",
                                 Ville = "Paris"
                             },
                         pourParticulier = true,
@@ -67,18 +66,17 @@ internal class RegiesSeeder(RegiesDBContext dbContext) : IRegiesSeeder
                 Adresse = new(){
                     Rue = "Rue de la République",
                     numeroRue = "10",
-                    codePostal = "69000",
+                    codePostal = "69-000",
                     Ville = "Lyon"
                 },
                 lesBiensDeLaRegie = [
                     new() {
-                        Id = 999998,
                         NomAnnonce="AnnonceLocale",
                         Decription = "Description de l'annonce locale",
                         Adresse = new(){
                                 Rue = "Rue de la République",
                                 numeroRue = "11",
-                                codePostal = "69000",
+                                codePostal = "69-000",
                                 Ville = "Lyon"
                             },
                         pourParticulier = false,
@@ -97,18 +95,17 @@ internal class RegiesSeeder(RegiesDBContext dbContext) : IRegiesSeeder
                 Adresse = new(){
                     Rue = "Avenue des Champs-Élysées",
                     numeroRue = "50",
-                    codePostal = "75008",
+                    codePostal = "75-008",
                     Ville = "Paris"
                 },
                 lesBiensDeLaRegie = [
                     new() {
-                        Id = 999997,
                         NomAnnonce="AnnonceParis",
                         Decription = "Description de l'annonce parisienne",
                         Adresse = new(){
                                 Rue = "Avenue des Champs-Élysées",
                                 numeroRue = "51",
-                                codePostal = "75008",
+                                codePostal = "75-008",
                                 Ville = "Paris"
                             },
                         pourParticulier = true,

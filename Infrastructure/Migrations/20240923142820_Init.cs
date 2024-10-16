@@ -36,7 +36,7 @@ namespace Regies.Infrastructure.Migrations
                 name: "BienImmobiliers",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "int", nullable: false).Annotation("SqlServer:Identity", "1, 1"),
                     NomAnnonce = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Decription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Adresse_Ville = table.Column<string>(type: "nvarchar(max)", nullable: true),
