@@ -46,3 +46,30 @@ Content-Type: application/json
 
 ###
 GET https://localhost:7246/api/Regies/1005
+###
+
+GET {{Regies.API_HostAddress}}/api/bienimmo/all
+
+###
+
+POST {{Regies.API_HostAddress}}/api/bienimmo/create
+Content-Type: application/json
+{
+  "NomAnnonce": "Charmant appartement au centre-ville",
+  "Decription": "Un appartement spacieux avec 3 chambres et une vue magnifique.",
+  "Adresse": {
+    "Ville": "Paris",
+    "Rue": "Rue de Rivoli",
+    "codePostal": "75001",
+    "numeroRue": "10"
+  },
+  "pourParticulier": true,
+  "isLocation": false,
+  "prixLocatif": 1500.00,
+  "prixVente": 500000.00,
+  "anneeCOnstruction": 1990,
+  "_typeBien": "Appartement",
+  "RegieId" : 1
+}
+
+###

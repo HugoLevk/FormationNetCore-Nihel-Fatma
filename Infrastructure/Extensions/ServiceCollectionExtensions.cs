@@ -16,6 +16,7 @@ public static class ServiceCollectionExtensions
         services.AddDbContext<RegiesDBContext>(options => options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
 
         services.AddScoped<IRegieRepository, RegieRepository>();
+        services.AddScoped<IBienImmoRepository, BienImmoRepository>();
 
         services.AddScoped<IRegiesSeeder, RegiesSeeder>();
     }

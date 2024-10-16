@@ -1,16 +1,10 @@
-﻿using Regies.Domain.Model;
+﻿using MediatR;
+using Regies.Domain.Model;
 
-namespace Regies.Application.BienImmobiliers.DTOs;
+namespace Regies.Application.BienImmobiliers.Commands.CreateBienImmo;
 
-/// <summary>
-/// Représente un bien immobilier.
-/// </summary>
-public class BienImmobiliersDTOs
+public class CreateBienImmoCommand : IRequest<int>
 {
-    /// <summary>
-    /// Obtient ou définit l'identifiant du bien immobilier.
-    /// </summary>
-    public int Id { get; set; }
     /// <summary>
     /// Obtient ou définit le nom de l'annonce.
     /// </summary>
@@ -58,4 +52,9 @@ public class BienImmobiliersDTOs
     /// Obtient ou définit le type de bien immobilier.
     /// </summary>
     public TypeBien _typeBien { get; set; } = TypeBien.Appartement;
+
+    ///<summary>
+    /// Foreign Key to specify the regie owning the property
+    /// </summary>
+    public int RegieId { get; set; }
 }

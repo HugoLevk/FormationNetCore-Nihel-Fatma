@@ -41,7 +41,7 @@ internal class RegiesSeeder(RegiesDBContext dbContext) : IRegiesSeeder
                 },
                 lesBiensDeLaRegie = [
                     new() {
-                        Id = Guid.NewGuid(),
+                        Id = 999999,
                         NomAnnonce="MonAnnonce",
                         Decription = "Lalalalere",
                         Adresse = new(){
@@ -72,7 +72,7 @@ internal class RegiesSeeder(RegiesDBContext dbContext) : IRegiesSeeder
                 },
                 lesBiensDeLaRegie = [
                     new() {
-                        Id = Guid.NewGuid(),
+                        Id = 999998,
                         NomAnnonce="AnnonceLocale",
                         Decription = "Description de l'annonce locale",
                         Adresse = new(){
@@ -102,7 +102,7 @@ internal class RegiesSeeder(RegiesDBContext dbContext) : IRegiesSeeder
                 },
                 lesBiensDeLaRegie = [
                     new() {
-                        Id = Guid.NewGuid(),
+                        Id = 999997,
                         NomAnnonce="AnnonceParis",
                         Decription = "Description de l'annonce parisienne",
                         Adresse = new(){

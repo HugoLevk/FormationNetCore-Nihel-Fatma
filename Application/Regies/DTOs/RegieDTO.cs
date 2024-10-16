@@ -1,4 +1,5 @@
-﻿using Regies.Domain.Model;
+﻿using Regies.Application.BienImmobiliers.DTOs;
+using Regies.Domain.Model;
 
 namespace Regies.Application.Regies.DTOs;
 
@@ -50,5 +51,5 @@ public class RegieDto
     /// <summary>
     /// Obtient ou définit la liste des biens immobiliers de la régie.
     /// </summary>
-    public List<BienImmobilier> lesBiensDeLaRegie { get; set; } = [];
+    public List<BienImmobiliersDTOs> lesBiensDeLaRegie { get; set; } = [];
 }

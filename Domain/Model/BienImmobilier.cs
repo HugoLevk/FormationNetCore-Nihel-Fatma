@@ -57,7 +57,7 @@ public class BienImmobilier
     /// <summary>
     /// Gets or sets the ID of the property.
     /// </summary>
-    public Guid Id { get; set; }
+    public int Id { get; set; }
 
     /// <summary>
     /// Gets or sets the name of the property listing.

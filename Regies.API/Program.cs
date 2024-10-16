@@ -37,11 +37,6 @@ builder.Services.AddSwaggerGen( c =>
 
     c.IncludeXmlComments(applicationXmlPath);
 
-    var domainXmlFile = $"../../../../Domain/bin/Debug/net8.0/Regies.Domain.xml";
-    var domainXmlPath = Path.Combine(AppContext.BaseDirectory, domainXmlFile);
-
-    c.IncludeXmlComments(domainXmlPath);
-
 });
 
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
