@@ -7,6 +7,7 @@ using Regies.Application.BienImmobiliers.DTOs;
 using Regies.Application.BienImmobiliers.Querys;
 using Regies.Application.BienImmobiliers.Querys.GetAllBienImmo;
 using Regies.Application.BienImmobiliers.Querys.GetBienImmoById;
+using Regies.Domain.Constants;
 using Regies.Domain.Model;
 
 namespace Regies.API.Controllers;
@@ -45,10 +46,11 @@ public class BienImmoController(IMediator _mediator) : ControllerBase
 
 
     [HttpPost("create")]
+    [Authorize(Roles = "Manager")]
     public async Task<IActionResult> Create([FromBody] CreateBienImmoCommand command)
     {
         var id = await _mediator.Send(command);
-         return CreatedAtAction(nameof(GetAll), new { id = id }, null);
+         return CreatedAtAction(nameof(GetAll), new { id }, null);
     }
 
     [HttpDelete("{id}")]

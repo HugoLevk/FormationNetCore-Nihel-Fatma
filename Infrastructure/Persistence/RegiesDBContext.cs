@@ -10,27 +10,27 @@ public class RegiesDBContext(DbContextOptions<RegiesDBContext> dbContextOptions)
 
     internal DbSet<BienImmobilier> BienImmobiliers { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder builder)
     {
-        base.OnModelCreating(modelBuilder);
+        base.OnModelCreating(builder);
 
-        modelBuilder.Entity<Regie>()
+        builder.Entity<Regie>()
             .OwnsOne( r =>  r.Adresse );
 
-        modelBuilder.Entity<BienImmobilier>()
+        builder.Entity<BienImmobilier>()
             .OwnsOne(b => b.Adresse);
 
-        modelBuilder.Entity<Regie>()
+        builder.Entity<Regie>()
             .HasMany(r => r.lesBiensDeLaRegie)
             .WithOne()
             .HasForeignKey(bi => bi.RegieId );
 
-        modelBuilder.Entity<BienImmobilier>()
+        builder.Entity<BienImmobilier>()
             .Property(bi => bi.prixLocatif)
             .HasColumnType("numeric")
             .HasPrecision(10,2);
 
-        modelBuilder.Entity<BienImmobilier>()
+        builder.Entity<BienImmobilier>()
             .Property(bi => bi.prixVente)
             .HasColumnType("numeric")
             .HasPrecision(10,2);

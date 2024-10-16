@@ -3,6 +3,9 @@ using Regies.Domain.Model;
 
 namespace Regies.Application.BienImmobiliers.Commands.CreateBienImmo;
 
+/// <summary>
+/// Représente une commande pour créer un bien immobilier.
+/// </summary>
 public class CreateBienImmoCommand : IRequest<int>
 {
     /// <summary>

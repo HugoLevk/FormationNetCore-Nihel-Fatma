@@ -6,6 +6,7 @@ using Regies.Infrastructure.Persistence;
 using Regies.Infrastructure.Repositories;
 using Regies.Infrastructure.Seeders;
 using Regies.Domain.Model;
+using Microsoft.AspNetCore.Identity;
 
 namespace Regies.Infrastructure.Extensions;
 
@@ -17,6 +18,7 @@ public static class ServiceCollectionExtensions
         services.AddDbContext<RegiesDBContext>(options => options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
 
         services.AddIdentityApiEndpoints<User>()
+            .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<RegiesDBContext>();
 
         services.AddScoped<IRegieRepository, RegieRepository>();

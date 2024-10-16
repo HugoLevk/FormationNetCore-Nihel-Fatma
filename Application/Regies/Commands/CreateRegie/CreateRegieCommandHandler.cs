@@ -17,7 +17,7 @@ namespace Regies.Application.Regies.Commands.CreateRegie;
 /// <param name="mapper">The mapper.</param>
 /// <param name="logger">The logger.</param>
 /// <param name="regieRepository">The regie repository.</param>
-public class CreateRegieCommandHandler(IMapper mapper, ILogger<CreateRegieCommandHandler> logger, IRegieRepository regieRepository, IUserContext userContext) : IRequestHandler<CreateRegieCommand, int>
+public class CreateRegieCommandHandler(IMapper mapper, ILogger<CreateRegieCommandHandler> logger, IRegieRepository regieRepository) : IRequestHandler<CreateRegieCommand, int>
 {
     /// <summary>
     /// Handles the create regie command.
@@ -26,8 +26,7 @@ public class CreateRegieCommandHandler(IMapper mapper, ILogger<CreateRegieComman
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The ID of the created regie.</returns>
     public async Task<int> Handle(CreateRegieCommand request, CancellationToken cancellationToken)
-    {
-        var user = userContext.GetCurrentUser();
+    { 
         logger.LogInformation("Creating Régie with name {@Regie}.", request.Nom);
         var regie = mapper.Map<Regie>(request);
         var regieId = await regieRepository.CreateAsync(regie);

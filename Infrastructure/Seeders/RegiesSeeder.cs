@@ -1,4 +1,6 @@
-﻿using Regies.Domain.Model;
+﻿using Microsoft.AspNetCore.Identity;
+using Regies.Domain.Constants;
+using Regies.Domain.Model;
 using Regies.Infrastructure.Persistence;
 using System.Reflection.Metadata.Ecma335;
 
@@ -14,6 +16,13 @@ internal class RegiesSeeder(RegiesDBContext dbContext) : IRegiesSeeder
             {
                 var regies = GetRegies();
                 dbContext.Regies.AddRange(regies);
+                await dbContext.SaveChangesAsync();
+            }
+
+            if (!dbContext.Roles.Any())
+            {
+                var roles = GetRoles();
+                dbContext.Roles.AddRange(roles);
                 await dbContext.SaveChangesAsync();
             }
         }
@@ -118,5 +127,14 @@ internal class RegiesSeeder(RegiesDBContext dbContext) : IRegiesSeeder
             ];
 
         return regies;
+    }
+
+    public static List<IdentityRole> GetRoles()
+    {
+        return [
+            new IdentityRole { Name = UserRoles.s_Admin.Name,   NormalizedName = UserRoles.s_Admin.NormalizedName },
+            new IdentityRole { Name = UserRoles.s_Manager.Name, NormalizedName = UserRoles.s_Manager.NormalizedName },
+            new IdentityRole { Name = UserRoles.s_User.Name,    NormalizedName = UserRoles.s_User.NormalizedName }
+        ];
     }
 }
