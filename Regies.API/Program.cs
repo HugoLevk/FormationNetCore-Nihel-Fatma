@@ -7,6 +7,7 @@ using System.Reflection;
 using Regies.API.SchemaFilters;
 using Regies.API.Middlewares;
 using Regies.Domain.Model;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,23 @@ builder.Services.AddSwaggerGen( c =>
     var applicationXmlPath = Path.Combine(AppContext.BaseDirectory, applicationXmlFile);
 
     c.IncludeXmlComments(applicationXmlPath);
+
+    c.AddSecurityDefinition("bearerAuth", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference{ Type = ReferenceType.SecurityScheme, Id = "bearerAuth"}
+            },
+            []
+        }
+    });
 
 });
 
