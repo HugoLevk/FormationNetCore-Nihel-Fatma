@@ -29,6 +29,8 @@ public static class ServiceCollectionExtension
 
             c.SchemaFilter<EnumSchemaFilter>();
 
+            c.OperationFilter<SwaggerResponseStatusCodeFilter>();
+
             var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 

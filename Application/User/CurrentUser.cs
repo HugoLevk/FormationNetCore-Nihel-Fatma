@@ -16,4 +16,9 @@ public record CurrentUser(string Id, string Email, IEnumerable<string> Roles)
     /// Gets a value indicating whether the user is an admin.
     /// </summary>
     public bool IsAdmin => IsEnroledIn("Admin");
+
+    public override string ToString()
+    {
+        return $"Id: {Id}, Email: {Email}, Roles: {string.Join(", ", Roles)}";
+    }
 }
