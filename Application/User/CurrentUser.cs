@@ -17,6 +17,10 @@ public record CurrentUser(string Id, string Email, IEnumerable<string> Roles)
     /// </summary>
     public bool IsAdmin => IsEnroledIn("Admin");
 
+    /// <summary>
+    /// Returns a string that represents the current user.
+    /// </summary>
+    /// <returns>A string that represents the current user.</returns>
     public override string ToString()
     {
         return $"Id: {Id}, Email: {Email}, Roles: {string.Join(", ", Roles)}";

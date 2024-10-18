@@ -7,6 +7,7 @@ using Regies.Infrastructure.Repositories;
 using Regies.Infrastructure.Seeders;
 using Regies.Domain.Model;
 using Microsoft.AspNetCore.Identity;
+using Regies.Infrastructure.Authorization;
 
 namespace Regies.Infrastructure.Extensions;
 
@@ -19,6 +20,7 @@ public static class ServiceCollectionExtensions
 
         services.AddIdentityApiEndpoints<User>()
             .AddRoles<IdentityRole>()
+            .AddClaimsPrincipalFactory<RegiesUserClaimsPrincipalFactory>()
             .AddEntityFrameworkStores<RegiesDBContext>();
 
         services.AddScoped<IRegieRepository, RegieRepository>();
