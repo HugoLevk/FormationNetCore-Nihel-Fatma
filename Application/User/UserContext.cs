@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Globalization;
 using System.Security.Claims;
 
 namespace Regies.Application.User;
@@ -43,7 +44,10 @@ public class UserContext(IHttpContextAccessor httpContextAccessor) : IUserContex
         var userId = user.FindFirst(ClaimTypes.NameIdentifier)!.Value;
         var email = user.FindFirst(ClaimTypes.Email)!.Value;
         var roles = user.FindAll(ClaimTypes.Role).Select(c => c.Value);
+        var nationality = user.FindFirst(c => c.Type == "Nationality")?.Value;
+        string birthDateString = user.FindFirst(c => c.Type == "BirthDate")?.Value ?? "";
+        DateOnly? birthDate = string.IsNullOrEmpty(birthDateString) ? null : DateOnly.Parse(birthDateString, CultureInfo.InvariantCulture);
 
-        return Task.FromResult<CurrentUser?>(new CurrentUser(userId, email, roles));
+        return Task.FromResult<CurrentUser?>(new CurrentUser(userId, email, roles, nationality, birthDate));
     }
 }

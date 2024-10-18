@@ -16,12 +16,12 @@ public class RegiesUserClaimsPrincipalFactory(UserManager<User> userManager,
 
         if (user.Nationality != null)
         {
-            id.AddClaim(new Claim(AppClaimTypes.Nationality, user.Nationality));
+            id.AddClaim(new Claim(AppClaimTypes.s_Nationality, user.Nationality));
         }
 
         if (user.BirthDate != null)
         {
-            id.AddClaim(new Claim(AppClaimTypes.BirthDate, user.BirthDate.Value.ToString("dd-MM-yyyy")));
+            id.AddClaim(new Claim(AppClaimTypes.s_BirthDate, user.BirthDate.Value.ToString("yyyy-MM-dd")));
         }
         return new ClaimsPrincipal(id);
 

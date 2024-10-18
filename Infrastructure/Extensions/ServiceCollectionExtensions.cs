@@ -9,6 +9,8 @@ using Regies.Domain.Model;
 using Microsoft.AspNetCore.Identity;
 using Regies.Infrastructure.Authorization;
 using Regies.Infrastructure.Constants;
+using Regies.Infrastructure.Authorization.Requirements;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Regies.Infrastructure.Extensions;
 
@@ -29,10 +31,10 @@ public static class ServiceCollectionExtensions
 
         services.AddScoped<IRegiesSeeder, RegiesSeeder>();
 
-        services.AddAuthorizationBuilder()
-                // Only checks if value exists
-                //.AddPolicy("HasNationality", builder => builder.RequireClaim("Nationality"));
-                // Checks the value of the specified claim
-                .AddPolicy(PolicyNames.HasNationality, builder => builder.RequireClaim(AppClaimTypes.Nationality, "German", "Polish"));
+        services.AddAuthorizationBuilder() 
+                .AddPolicy(PolicyNames.s_HasNationality, builder => builder.RequireClaim(AppClaimTypes.s_Nationality, "German", "Polish"))
+                .AddPolicy(PolicyNames.s_AtLeast20, builder => builder.AddRequirements(new MinimumAgeRequirement(20)));
+
+        services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
     }
 }

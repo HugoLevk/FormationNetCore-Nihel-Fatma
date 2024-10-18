@@ -9,6 +9,7 @@ using Regies.Application.BienImmobiliers.Querys.GetAllBienImmo;
 using Regies.Application.BienImmobiliers.Querys.GetBienImmoById;
 using Regies.Domain.Constants;
 using Regies.Domain.Model;
+using Regies.Infrastructure.Constants;
 
 namespace Regies.API.Controllers;
 
@@ -34,6 +35,7 @@ public class BienImmoController(IMediator _mediator) : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [Authorize(Policy = PolicyNames.s_AtLeast20)]
     public async Task<IActionResult> GetById([FromRoute] int id)
     {
         var bienImmo = await _mediator.Send(new GetBienImmoByIdQuery(id));

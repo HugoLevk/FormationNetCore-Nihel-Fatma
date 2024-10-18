@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents the current user.
 /// </summary>
-public record CurrentUser(string Id, string Email, IEnumerable<string> Roles)
+public record CurrentUser(string Id, string Email, IEnumerable<string> Roles, string? Nationality, DateOnly? BirthDate)
 {
     /// <summary>
     /// Checks if the user is enrolled in the specified role.
@@ -23,6 +23,6 @@ public record CurrentUser(string Id, string Email, IEnumerable<string> Roles)
     /// <returns>A string that represents the current user.</returns>
     public override string ToString()
     {
-        return $"Id: {Id}, Email: {Email}, Roles: {string.Join(", ", Roles)}";
+        return $"Id: {Id}, Email: {Email}, Roles: {string.Join(", ", Roles)}, BirthDate : {BirthDate}, Naionality : {Nationality} ";
     }
 }

@@ -45,7 +45,7 @@ public class RegiesController(IMediator mediator) : ControllerBase
     /// <response code="200">Retourne la régie.</response>
     /// <response code="404">Si la régie n'existe pas.</response>
     [HttpGet("{id}")]
-    [Authorize(Policy = PolicyNames.HasNationality)]
+    [Authorize(Policy = PolicyNames.s_HasNationality)]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RegieDto))]
     [ProducesResponseType(404, StatusCode = StatusCodes.Status404NotFound)]
     public async Task<ActionResult<RegieDto?>> GetById([FromRoute] int id)
