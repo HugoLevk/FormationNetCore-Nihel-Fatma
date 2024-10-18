@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Regies.Domain.Model;
+using System.Reflection.Emit;
 
 namespace Regies.Infrastructure.Persistence;
 
@@ -34,6 +35,11 @@ public class RegiesDBContext(DbContextOptions<RegiesDBContext> dbContextOptions)
             .Property(bi => bi.prixVente)
             .HasColumnType("numeric")
             .HasPrecision(10,2);
+
+        builder.Entity<User>()
+                .HasMany(p => p.OwnedRegies)
+                .WithOne(r => r.Owner)
+                .HasForeignKey(r => r.OwnerId);
     }
 
 }

@@ -44,4 +44,14 @@ public class Regie
     /// Obtient ou définit la liste des biens immobiliers de la régie.
     /// </summary>
     public List<BienImmobilier> lesBiensDeLaRegie { get; set; } = [];
+
+    /// <summary>
+    /// Obtient ou définit le propriétaire de la régie.
+    /// </summary>
+    public User Owner { get; set; } = default!;
+
+    /// <summary>
+    /// Obtient ou définit l'identifiant du propriétaire de la régie.
+    /// </summary>
+    public string OwnerId { get; set; } = default!;
 }
