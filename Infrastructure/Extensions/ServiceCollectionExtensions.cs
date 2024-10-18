@@ -27,5 +27,11 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IBienImmoRepository, BienImmoRepository>();
 
         services.AddScoped<IRegiesSeeder, RegiesSeeder>();
+
+        services.AddAuthorizationBuilder()
+                // Only checks if value exists
+                //.AddPolicy("HasNationality", builder => builder.RequireClaim("Nationality"));
+                // Checks the value of the specified claim
+                .AddPolicy("HasNationality", builder => builder.RequireClaim("Nationality", "German", "Polish"));
     }
 }
