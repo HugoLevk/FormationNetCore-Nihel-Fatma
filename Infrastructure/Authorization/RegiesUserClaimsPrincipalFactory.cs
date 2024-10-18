@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Regies.Domain.Model;
+using Regies.Infrastructure.Constants;
 using System.Security.Claims;
 
 namespace Regies.Infrastructure.Authorization;
@@ -15,12 +16,12 @@ public class RegiesUserClaimsPrincipalFactory(UserManager<User> userManager,
 
         if (user.Nationality != null)
         {
-            id.AddClaim(new Claim("Nationality", user.Nationality));
+            id.AddClaim(new Claim(AppClaimTypes.Nationality, user.Nationality));
         }
 
         if (user.BirthDate != null)
         {
-            id.AddClaim(new Claim("BirthDate", user.BirthDate.Value.ToString("dd-MM-yyyy")));
+            id.AddClaim(new Claim(AppClaimTypes.BirthDate, user.BirthDate.Value.ToString("dd-MM-yyyy")));
         }
         return new ClaimsPrincipal(id);
 

@@ -8,6 +8,7 @@ using Regies.Infrastructure.Seeders;
 using Regies.Domain.Model;
 using Microsoft.AspNetCore.Identity;
 using Regies.Infrastructure.Authorization;
+using Regies.Infrastructure.Constants;
 
 namespace Regies.Infrastructure.Extensions;
 
@@ -32,6 +33,6 @@ public static class ServiceCollectionExtensions
                 // Only checks if value exists
                 //.AddPolicy("HasNationality", builder => builder.RequireClaim("Nationality"));
                 // Checks the value of the specified claim
-                .AddPolicy("HasNationality", builder => builder.RequireClaim("Nationality", "German", "Polish"));
+                .AddPolicy(PolicyNames.HasNationality, builder => builder.RequireClaim(AppClaimTypes.Nationality, "German", "Polish"));
     }
 }
